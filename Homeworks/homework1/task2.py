@@ -2,9 +2,9 @@ thing = input()
 number = input()
 two = ['2', '3', '4']
 teens = ['11']
-x=11
+x = 11
 for i in range(7):
-    x+=1
+    x += 1
     teens.append(str(x))
 if thing == 'ложка':
     if number[-1] == '1':
