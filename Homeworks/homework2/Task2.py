@@ -1,15 +1,15 @@
-n, k = input().split(' ')
-n = int(n)
-k = int(k)
-def fact(a):
-    if a == 0:
-        return 1
-    else:
-        return a*fact(a - 1)
-def combinations(n, k):
-    ncomb = fact(n)/(fact(k)*fact(n-k))
-    return int(ncomb)
-if k > n:
-    print(0)
-else:
-    print(combinations(n, k))
+n = int(input())
+numbers = []
+while n > 0:
+    numbers.append(int(input()))
+    n -= 1
+def prime(x):
+    counter = 2
+    while counter < x:
+        if x % counter == 0:
+            return False
+        else:
+            counter += 1
+    return True
+for i in numbers:
+    print(prime(i))
