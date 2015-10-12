@@ -7,9 +7,9 @@ def prime(x):
     counter = 2
     while counter < x:
         if x % counter == 0:
-            return 'False'
+            return False
         else:
             counter += 1
-    return 'True'
+    return True
 for i in numbers:
     print(prime(i))
