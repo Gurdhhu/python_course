@@ -8,8 +8,8 @@ class Song:
         self.duration = duration
 
     def __repr__(self):
-        return 'Song \"%s\" by %s from album \"%s\" %i (track %s, %i s)' %(self.name, self.artist, self.album,
-                                                                           self.year, self.position, self.duration)
+        return 'Song \"%s\" by %s from album \"%s\" %i (track %s, %i s)' % (self.name, self.artist, self.album,
+                                                                            self.year, self.position, self.duration)
 
     def __lt__(self, other):
         if self.artist < other.artist:
@@ -26,7 +26,7 @@ def import_songs(file_name):
         for line in lines:
             attr = (line.split('\t'))
             songlist.append(Song(attr[0], attr[1], attr[2], attr[3], int(attr[4]), int(attr[5])))
-    return(songlist)
+    return songlist
 
 
 def export_songs(songs, file_names):
@@ -42,10 +42,9 @@ def shuffle_songs(songs):
     return shuffle(songs)
 
 
-
 songs = import_songs('songs1.txt')
 
-#part1: the most frequent artists
+# part1: the most frequent artists
 artists_lib = {}
 for song in songs:
     if song.artist not in artists_lib:
@@ -58,7 +57,7 @@ for key in artists_lib:
         artists_freq = [key, artists_lib[key]]
 print(artists_freq[0])
 
-#part2: the longest song
+# part2: the longest song
 duration_lib = {}
 for song in songs:
     duration_lib[song.name+';'+song.artist] = song.duration
@@ -68,7 +67,7 @@ for key in duration_lib:
         duration_max = [key, duration_lib[key]]
 print('\t'.join(duration_max[0].split(';')))
 
-#part3: the longest album
+# part3: the longest album
 albums_lib = {}
 for song in songs:
     if song.album+';'+song.artist not in albums_lib:
@@ -81,9 +80,9 @@ for key in albums_lib:
         album_longest = [key, albums_lib[key]]
 print('\t'.join(album_longest[0].split(';')))
 
-#part4: ten words. Эпопея начинается
 
-#Сортировка по принципу "разделяй и властвуй"
+# part4: ten words. Эпопея начинается
+# Сортировка по принципу "разделяй и властвуй"
 def MergeLists(A, B):
     C = []
     count1 = 0
@@ -111,7 +110,8 @@ def MergeSortList(A):
     A = MergeLists(A[:int(len(A)/2)], A[int(len(A)/2):])
     return A
 
-#Приведение слов в нужный формат
+
+# Приведение слов в нужный формат
 def filtration(x):
     outstring = []
     for i in x.lower():
@@ -121,7 +121,7 @@ def filtration(x):
             outstring.append(' ')
     return((''.join(outstring)).split())
 
-#Подсчет слов
+# Подсчет слов
 words_lib = {}
 for song in songs:
     for word in filtration(song.name):
@@ -130,12 +130,12 @@ for song in songs:
         else:
             words_lib[word] += 1
 
-#Превращение в список, чтобы можно было отсортировать
+# Превращение в список, чтобы можно было отсортировать
 words_list = []
 for key in words_lib:
-       words_list.append([key, words_lib[key]])
+    words_list.append([key, words_lib[key]])
 
-#Наконец, сортировка
+# Наконец, сортировка
 out = []
 if len(words_list) <= 10:
     for i in MergeSortList(words_list):
@@ -146,7 +146,7 @@ else:
         out.append(i[0])
     print('\t'.join(out))
 
-#Task5: the artist of many albums
+# Task5: the artist of many albums
 artalb_lib = {}
 for song in songs:
     if song.artist not in artalb_lib:
