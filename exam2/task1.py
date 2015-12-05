@@ -5,7 +5,6 @@ with open("hp5.txt", "r") as f:
 
 pattern = "whisper\w* ([A-Z]\w+( [A-Z]\w+)*)|([A-Z]\w+( [A-Z]\w+)*) whisper\w*"
 whisperers = re.findall(pattern, text)
-print(whisperers)
 namelib = {}
 for match in whisperers:
     tmp = ''
