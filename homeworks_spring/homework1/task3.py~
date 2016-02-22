@@ -16,4 +16,4 @@ class fibonacci_sequence:
             self.count += 1
             return self.ret_val
         else:
-            raise StopIteration
+            raise(StopIteration)
