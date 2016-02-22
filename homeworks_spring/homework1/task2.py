@@ -1,5 +1,5 @@
 try:
-    foo
+    foo()
 except AssertionError:
     print("Caught AssertionError")
 except MemoryError:
